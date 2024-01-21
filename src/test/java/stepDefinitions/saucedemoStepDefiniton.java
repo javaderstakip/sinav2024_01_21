@@ -143,7 +143,7 @@ public class saucedemoStepDefiniton extends BaseTest {
         System.out.println(tShirtRedUrunFiyat.getText().equals("$15.99"));
         int total;
         total = a+b;
-        System.out.println("toplam: "+total);
+        System.out.println("toplam: "+total);//bu kisim calismadi !!
         Thread.sleep(2000);
     }
 }
