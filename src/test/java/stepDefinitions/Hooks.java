@@ -13,7 +13,7 @@ public class Hooks {
     @AfterAll
     public static void endTest() throws InterruptedException {
         System.out.println("************ End Test");
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         DriverSource.INSTANCE.getDriver().manage().window().minimize();
         DriverSource.INSTANCE.getDriver().quit();
     }

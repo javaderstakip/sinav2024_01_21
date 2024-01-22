@@ -109,41 +109,66 @@ public class saucedemoStepDefiniton extends BaseTest {
 
     @And("urun fiyatlarini topla")
     public void urunFiyatlariniTopla() {
+
+                String ifade = "Merhaba Dunya";
+
+                // İlk harfi silme
+                String yeniIfade = ifade.substring(1);
+
+                // Yeni ifadeyi ekrana yazdırma
+                System.out.println(yeniIfade); // erhaba Dünya
         System.out.println("hi");
     }
 
     @Then("fiyatlari kontrol et")
     public void fiyatlariKontrolEt() throws InterruptedException {
-//        WebElement priceTotal = driver.findElement(By.xpath("(//*[@id=\"checkout_summary_container\"]/div/div[2]/div[6]/text()[2]"));
-//        System.out.println(priceTotal.getText());
-//        System.out.println(priceTotal.getText().toString());
-//        System.out.println("bunun dogru olmasi lazim : "+priceTotal.getText().equals("$129.94"));
-//        System.out.println(priceTotal.getText().toString().equals("$129.94"));
-        System.out.println("finish!!");
         //WebElement backPackUrunFiyat = driver.findElement(By.xpath("(//div[contains(text(),'$')])[1]"));
         WebElement backPackUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[1]"));
         System.out.println(backPackUrunFiyat.getText());
         System.out.println("neden!!! : "+backPackUrunFiyat.getText().equals("$29.99"));
-        int a = Integer.parseInt(backPackUrunFiyat.getText());
+        //int a = Integer.parseInt(backPackUrunFiyat.getText());
+        double ilk = Double.parseDouble(backPackUrunFiyat.getText().substring(1));
+        System.out.println("ilk: "+ilk);
         WebElement bikeLightUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[2]"));
         System.out.println(bikeLightUrunFiyat.getText());
         System.out.println(bikeLightUrunFiyat.getText().equals("$9.99"));
-        int b = Integer.parseInt(bikeLightUrunFiyat.getText());
+        double ikinci = Double.parseDouble(bikeLightUrunFiyat.getText().substring(1));
+        System.out.println("ikinci: "+ikinci);
         WebElement boltTShirtUrunEkliFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[3]"));
         System.out.println(boltTShirtUrunEkliFiyat.getText());
         System.out.println(boltTShirtUrunEkliFiyat.getText().equals("$15.99"));
+        double ucuncu = Double.parseDouble(boltTShirtUrunEkliFiyat.getText().substring(1));
+        System.out.println("ucuncu: "+ucuncu);
         WebElement fleeceJacketUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[4]"));
         System.out.println(fleeceJacketUrunFiyat.getText());
         System.out.println(fleeceJacketUrunFiyat.getText().equals("$49.99"));
+        double dorduncu = Double.parseDouble(fleeceJacketUrunFiyat.getText().substring(1));
+        System.out.println("dorduncu: "+dorduncu);
         WebElement onesieUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[5]"));
         System.out.println(onesieUrunFiyat.getText());
         System.out.println(onesieUrunFiyat.getText().equals("$7.99"));
+        double besinci = Double.parseDouble(onesieUrunFiyat.getText().substring(1));
+        System.out.println("besinci: "+besinci);
         WebElement tShirtRedUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[6]"));
         System.out.println(tShirtRedUrunFiyat.getText());
         System.out.println(tShirtRedUrunFiyat.getText().equals("$15.99"));
-        int total;
-        total = a+b;
-        System.out.println("toplam: "+total);//bu kisim calismadi !!
-        Thread.sleep(2000);
+        double altinci = Double.parseDouble(tShirtRedUrunFiyat.getText().substring(1));
+        System.out.println("altinci: "+altinci);
+        double total;
+        total = ilk+ikinci+ucuncu+dorduncu+besinci+altinci;
+        System.out.println("toplam: "+total);
+
+
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[7]"));
+        System.out.println(priceTotal.getText());
+        System.out.println(priceTotal.getText().equals("$129.94"));
+
+        System.out.println("bunun dogru olmasi lazim : "+priceTotal.getText().equals("$129.94"));
+
+        double toplam = Double.parseDouble(priceTotal.getText().substring(1));
+        System.out.println(toplam);
+        System.out.println("finish!!");
+        //Assert.assertTrue(driver.);
+        //Thread.sleep(2000);
     }
 }
