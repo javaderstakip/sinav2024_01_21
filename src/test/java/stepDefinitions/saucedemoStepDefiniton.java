@@ -160,15 +160,14 @@ public class saucedemoStepDefiniton extends BaseTest {
 
 
         WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[7]"));
-        System.out.println(priceTotal.getText());
-        System.out.println(priceTotal.getText().equals("$129.94"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println(priceTotal.getText().substring(13));
 
-        System.out.println("bunun dogru olmasi lazim : "+priceTotal.getText().equals("$129.94"));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(13));
+        System.out.println("bu niye boyle: "+saucedemotoplam);
+        Assert.assertTrue(total == saucedemotoplam);
+        System.out.println(total == saucedemotoplam);
 
-        double toplam = Double.parseDouble(priceTotal.getText().substring(1));
-        System.out.println(toplam);
-        System.out.println("finish!!");
-        //Assert.assertTrue(driver.);
-        //Thread.sleep(2000);
+        System.out.println("finish!!!");
     }
 }
