@@ -129,31 +129,37 @@ public class saucedemoStepDefiniton extends BaseTest {
         //int a = Integer.parseInt(backPackUrunFiyat.getText());
         double ilk = Double.parseDouble(backPackUrunFiyat.getText().substring(1));
         System.out.println("ilk: "+ilk);
+
         WebElement bikeLightUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[2]"));
         System.out.println(bikeLightUrunFiyat.getText());
         System.out.println(bikeLightUrunFiyat.getText().equals("$9.99"));
         double ikinci = Double.parseDouble(bikeLightUrunFiyat.getText().substring(1));
         System.out.println("ikinci: "+ikinci);
+
         WebElement boltTShirtUrunEkliFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[3]"));
         System.out.println(boltTShirtUrunEkliFiyat.getText());
         System.out.println(boltTShirtUrunEkliFiyat.getText().equals("$15.99"));
         double ucuncu = Double.parseDouble(boltTShirtUrunEkliFiyat.getText().substring(1));
         System.out.println("ucuncu: "+ucuncu);
+
         WebElement fleeceJacketUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[4]"));
         System.out.println(fleeceJacketUrunFiyat.getText());
         System.out.println(fleeceJacketUrunFiyat.getText().equals("$49.99"));
         double dorduncu = Double.parseDouble(fleeceJacketUrunFiyat.getText().substring(1));
         System.out.println("dorduncu: "+dorduncu);
+
         WebElement onesieUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[5]"));
         System.out.println(onesieUrunFiyat.getText());
         System.out.println(onesieUrunFiyat.getText().equals("$7.99"));
         double besinci = Double.parseDouble(onesieUrunFiyat.getText().substring(1));
         System.out.println("besinci: "+besinci);
+
         WebElement tShirtRedUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[6]"));
         System.out.println(tShirtRedUrunFiyat.getText());
         System.out.println(tShirtRedUrunFiyat.getText().equals("$15.99"));
         double altinci = Double.parseDouble(tShirtRedUrunFiyat.getText().substring(1));
         System.out.println("altinci: "+altinci);
+
         double total;
         total = ilk+ikinci+ucuncu+dorduncu+besinci+altinci;
         System.out.println("toplam: "+total);
@@ -167,6 +173,8 @@ public class saucedemoStepDefiniton extends BaseTest {
         System.out.println("bu niye boyle: "+saucedemotoplam);
         Assert.assertTrue(total == saucedemotoplam);
         System.out.println(total == saucedemotoplam);
+        boolean actual = total == saucedemotoplam;
+        System.out.println(actual);
 
         System.out.println("finish!!!");
     }
