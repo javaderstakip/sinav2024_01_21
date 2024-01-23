@@ -2,12 +2,15 @@ package stepDefinitions;
 
 import io.cucumber.java.*;
 
-public class Hooks {
+public class Hooks extends BaseTest{
+
     @BeforeAll
-    public static void initTest() {
+    public static void initTest() throws InterruptedException {
         System.out.println("************ Begin Test");
         DriverSource.INSTANCE.getDriver();
+        DriverSource.INSTANCE.getDriver().get("https://www.saucedemo.com/");
         DriverSource.INSTANCE.getDriver().manage().window().maximize();
+        //Thread.sleep(2000);
     }
 
     @AfterAll
@@ -16,6 +19,7 @@ public class Hooks {
         //Thread.sleep(2000);
         DriverSource.INSTANCE.getDriver().manage().window().minimize();
         DriverSource.INSTANCE.getDriver().quit();
+        //Thread.sleep(2000);
     }
 
     @Before

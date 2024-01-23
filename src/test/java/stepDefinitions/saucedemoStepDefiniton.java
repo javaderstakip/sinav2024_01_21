@@ -178,4 +178,83 @@ public class saucedemoStepDefiniton extends BaseTest {
 
         System.out.println("finish!!!");
     }
+
+    @Given("tutarlari topla")
+    public double tutarlariTopla() {
+        WebElement backPackUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[1]"));
+        System.out.println(backPackUrunFiyat.getText());
+        System.out.println("neden!!! : "+backPackUrunFiyat.getText().equals("$29.99"));
+        //int a = Integer.parseInt(backPackUrunFiyat.getText());
+        double ilk = Double.parseDouble(backPackUrunFiyat.getText().substring(1));
+        System.out.println("ilk: "+ilk);
+
+        WebElement bikeLightUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[2]"));
+        System.out.println(bikeLightUrunFiyat.getText());
+        System.out.println(bikeLightUrunFiyat.getText().equals("$9.99"));
+        double ikinci = Double.parseDouble(bikeLightUrunFiyat.getText().substring(1));
+        System.out.println("ikinci: "+ikinci);
+
+        WebElement boltTShirtUrunEkliFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[3]"));
+        System.out.println(boltTShirtUrunEkliFiyat.getText());
+        System.out.println(boltTShirtUrunEkliFiyat.getText().equals("$15.99"));
+        double ucuncu = Double.parseDouble(boltTShirtUrunEkliFiyat.getText().substring(1));
+        System.out.println("ucuncu: "+ucuncu);
+
+        WebElement fleeceJacketUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[4]"));
+        System.out.println(fleeceJacketUrunFiyat.getText());
+        System.out.println(fleeceJacketUrunFiyat.getText().equals("$49.99"));
+        double dorduncu = Double.parseDouble(fleeceJacketUrunFiyat.getText().substring(1));
+        System.out.println("dorduncu: "+dorduncu);
+
+        WebElement onesieUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[5]"));
+        System.out.println(onesieUrunFiyat.getText());
+        System.out.println(onesieUrunFiyat.getText().equals("$7.99"));
+        double besinci = Double.parseDouble(onesieUrunFiyat.getText().substring(1));
+        System.out.println("besinci: "+besinci);
+
+        WebElement tShirtRedUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[6]"));
+        System.out.println(tShirtRedUrunFiyat.getText());
+        System.out.println(tShirtRedUrunFiyat.getText().equals("$15.99"));
+        double altinci = Double.parseDouble(tShirtRedUrunFiyat.getText().substring(1));
+        System.out.println("altinci: "+altinci);
+
+        double toplam;
+        toplam = ilk+ikinci+ucuncu+dorduncu+besinci+altinci;
+        System.out.println("toplam: "+toplam);
+        return toplam;
+    }
+
+    @And("toplamin vergisini hesapla")
+    public double toplaminVergisiniHesapla() {
+        double taxYuzde = 0.08;
+        double tax = tutarlariTopla() * taxYuzde;
+        System.out.println("vergi: "+tax);
+        return tax;
+    }
+
+    @When("toplama vergiyi ekle")
+    public double toplamaVergiyiEkle() {
+        double vergiEklenmisToplam = tutarlariTopla() + toplaminVergisiniHesapla();
+        System.out.println("vergi eklenmis toplam: " + vergiEklenmisToplam);
+        double yuvarlanan_sayı = (double) Math.round(vergiEklenmisToplam * 100) / 100;
+        System.out.println("yuvarlayinca: "+yuvarlanan_sayı);
+        return yuvarlanan_sayı;
+    }
+
+    @Then("total ile toplami karsilastir")
+    public void totalIleToplamiKarsilastir() {
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[9]"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println(priceTotal.getText().substring(8));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(8));
+        System.out.println("bu niye boyle: "+saucedemotoplam);
+
+
+        System.out.println(saucedemotoplam);
+        System.out.println(toplamaVergiyiEkle());
+        Assert.assertEquals(saucedemotoplam, toplamaVergiyiEkle());
+
+        System.out.println("finish!!!");
+        System.out.println("bittiiii!!!...");
+    }
 }
