@@ -16,10 +16,10 @@ public class Hooks extends BaseTest{
     @AfterAll
     public static void endTest() throws InterruptedException {
         System.out.println("************ End Test");
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
         DriverSource.INSTANCE.getDriver().manage().window().minimize();
-        DriverSource.INSTANCE.getDriver().quit();
-        //Thread.sleep(2000);
+        //DriverSource.INSTANCE.getDriver().quit();
+        Thread.sleep(2000);
     }
 
     @Before
