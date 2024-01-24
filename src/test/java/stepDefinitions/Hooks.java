@@ -18,7 +18,7 @@ public class Hooks extends BaseTest{
         System.out.println("************ End Test");
         Thread.sleep(2000);
         DriverSource.INSTANCE.getDriver().manage().window().minimize();
-        //DriverSource.INSTANCE.getDriver().quit();
+        DriverSource.INSTANCE.getDriver().quit();
         Thread.sleep(2000);
     }
 

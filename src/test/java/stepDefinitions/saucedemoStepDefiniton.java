@@ -106,57 +106,7 @@ public class saucedemoStepDefiniton extends BaseTest {
     public void urunFiyatlariniAl() {
         System.out.println("hi");
     }
-    @Given("ilkUrunFiyatiniAl")
-    public double ilkurunfiyatinial() {
-        WebElement backPackUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[1]"));
-        System.out.println(backPackUrunFiyat.getText());
-        System.out.println("neden!!! : "+backPackUrunFiyat.getText().equals("$29.99"));
-        double ilk = Double.parseDouble(backPackUrunFiyat.getText().substring(1));
-        System.out.println("ilk: "+ilk);
-        System.out.println("flag ilk urun");
-        return ilk;
-    }
-    @And("ikinciUrunFiyatiniAl")
-    public double ikinciurunfiyatinial() {
-        WebElement bikeLightUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[2]"));
-        System.out.println(bikeLightUrunFiyat.getText());
-        System.out.println(bikeLightUrunFiyat.getText().equals("$9.99"));
-        double ikinci = Double.parseDouble(bikeLightUrunFiyat.getText().substring(1));
-        System.out.println("ikinci: "+ikinci);
-        return ikinci;
-    }
-    @And("ucuncuUrunFiyatiniAl")
-    public double ucuncuurunfiyatinial() {
-        WebElement boltTShirtUrunEkliFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[3]"));
-        System.out.println(boltTShirtUrunEkliFiyat.getText());
-        System.out.println(boltTShirtUrunEkliFiyat.getText().equals("$15.99"));
-        double ucuncu = Double.parseDouble(boltTShirtUrunEkliFiyat.getText().substring(1));
-        System.out.println("ucuncu: "+ucuncu);
-        return ucuncu;
-    }
-    public double dorduncuUrunFiyatiniAl() {
-        WebElement fleeceJacketUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[4]"));
-        System.out.println(fleeceJacketUrunFiyat.getText());
-        System.out.println(fleeceJacketUrunFiyat.getText().equals("$49.99"));
-        double dorduncu = Double.parseDouble(fleeceJacketUrunFiyat.getText().substring(1));
-        System.out.println("ucuncu: "+dorduncu);
-        return dorduncu;
-    }
-    public double besinciUrunFiyatiniAl() {
-        WebElement onesieUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[5]"));
-        System.out.println(onesieUrunFiyat.getText());
-        System.out.println(onesieUrunFiyat.getText().equals("$7.99"));
-        double besinci = Double.parseDouble(onesieUrunFiyat.getText().substring(1));
-        System.out.println("besinci: "+besinci);
-        return besinci;
-    }
-    public double altinciUrunFiyatiniAl() {WebElement tShirtRedUrunFiyat = driver.findElement(By.xpath("(//div[@class='inventory_item_price'])[6]"));
-        System.out.println(tShirtRedUrunFiyat.getText());
-        System.out.println(tShirtRedUrunFiyat.getText().equals("$15.99"));
-        double altinci = Double.parseDouble(tShirtRedUrunFiyat.getText().substring(1));
-        System.out.println("altinci: "+altinci);
-        return altinci;
-    }
+
     @And("urun fiyatlarini topla")
     public void urunFiyatlariniTopla() {
 //
@@ -343,8 +293,17 @@ public class saucedemoStepDefiniton extends BaseTest {
 
     @Given("bes urun fiyatlarini al")
     public void besUrunFiyatlariniAl() {
-
+        System.out.println("hi");
     }
 
 
+    @And("bes urun fiyatlarini topla")
+    public void besUrunFiyatlariniTopla() {
+        System.out.println("hi");
+    }
+
+    @Then("bes urun fiyatlari toplamini kontrol et")
+    public void besUrunFiyatlariToplaminiKontrolEt() {
+        System.out.println("hi");
+    }
 }

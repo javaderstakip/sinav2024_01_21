@@ -8,8 +8,12 @@ Feature: saucedemo 5 urun sec
     Then siteye gir
 
   @milestone_2_2
-  Scenario: urunlerin 5 tanesini sec
-    Given ilk bes urun sec
+  Scenario: urunleri sec
+    Given ilkUrunFiyatiniSec
+    And ikinciUrunFiyatiniSec
+    And ucuncuUrunFiyatiniSec
+    And dorduncuUrunFiyatiniSec
+    And besinciUrunFiyatiniSec
     When sepete git
     Then bes urun secili mi kontrol et
 
@@ -21,15 +25,17 @@ Feature: saucedemo 5 urun sec
     And postal code gir
     Then continue de
 
-  @milestone_2_
+  @milestone_2_4
   Scenario: urunlerin fiyatlarini al
     Given ilkUrunFiyatiniAl
     And ikinciUrunFiyatiniAl
     And ucuncuUrunFiyatiniAl
+    And dorduncuUrunFiyatiniAl
+    And besinciUrunFiyatiniAl
 
-  @milestone_2_4
+  @milestone_2_5
   Scenario: price total control yap
-    Given urun fiyatlarini al
+    Given bes urun fiyatini al
     And bes urun fiyatlarini topla
-    Then bes fiyatlari kontrol et
+    Then bes urun fiyatlari toplamini kontrol et
 
