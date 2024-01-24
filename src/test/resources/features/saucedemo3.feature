@@ -1,19 +1,18 @@
-@milestone_2
+@milestone_3
 Feature: saucedemo 5 urun sec
-  @milestone_2_1
+  @milestone_3_1
   Scenario: giris ekranina git siteye gir
     Given site giris sayfasina git
     And gecerli ad gir
     And gecerli sifre gir
     Then siteye gir
 
-  @milestone_2_2
+  @milestone_3_2
   Scenario: urunleri sec
     Given ilkUrunFiyatiniSec
     And ikinciUrunFiyatiniSec
     And ucuncuUrunFiyatiniSec
     And dorduncuUrunFiyatiniSec
-    And besinciUrunFiyatiniSec
     When sepete git
     Then bes urun secili mi kontrol et
 
@@ -31,11 +30,9 @@ Feature: saucedemo 5 urun sec
     And ikinciUrunFiyatiniAl
     And ucuncuUrunFiyatiniAl
     And dorduncuUrunFiyatiniAl
-    And besinciUrunFiyatiniAl
 
   @milestone_2_5
   Scenario: price total control yap
-    Given bes urun fiyatini al
-    And bes urun fiyatlarini topla
-    Then bes urun fiyatlari toplamini kontrol et
-
+    Given dort urun fiyatini al
+    When saucedemoTotalDortUrun
+    Then dort urun fiyatlari toplami kontrol

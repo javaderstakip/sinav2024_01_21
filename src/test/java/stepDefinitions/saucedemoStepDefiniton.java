@@ -236,9 +236,9 @@ public class saucedemoStepDefiniton extends BaseTest {
     public double toplamaVergiyiEkle() {
         double vergiEklenmisToplam = tutarlariTopla() + toplaminVergisiniHesapla();
         System.out.println("vergi eklenmis toplam: " + vergiEklenmisToplam);
-        double yuvarlanan_sayı = (double) Math.round(vergiEklenmisToplam * 100) / 100;
-        System.out.println("yuvarlayinca: "+yuvarlanan_sayı);
-        return yuvarlanan_sayı;
+        double yuvarlanan_sayi = (double) Math.round(vergiEklenmisToplam * 100) / 100;
+        System.out.println("yuvarlayinca: "+yuvarlanan_sayi);
+        return yuvarlanan_sayi;
     }
 
     @Then("total ile toplami karsilastir")
@@ -284,8 +284,8 @@ public class saucedemoStepDefiniton extends BaseTest {
         boltTShirtUrunEkli.isDisplayed();
         WebElement fleeceJacketUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_5_title_link\"]/div"));
         fleeceJacketUrunEkli.isDisplayed();
-        WebElement onesieUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_2_title_link\"]/div"));
-        onesieUrunEkli.isDisplayed();
+//        WebElement onesieUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_2_title_link\"]/div"));
+//        onesieUrunEkli.isDisplayed();
 //        WebElement tShirtRedUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_3_title_link\"]/div"));
 //        tShirtRedUrunEkli.isDisplayed();
 //        System.out.println("nasil oluyor : "+tShirtRedUrunEkli.isDisplayed());

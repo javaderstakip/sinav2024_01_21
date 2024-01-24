@@ -2,8 +2,11 @@ package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class saucedemo2StepDefinition extends BaseTest {
     @Given("ilkUrunFiyatiniAl")
@@ -98,8 +101,45 @@ public class saucedemo2StepDefinition extends BaseTest {
     }
 
     @Given("bes urun fiyatini al")
-    public void besUrunFiyatiniAl() {
+    public double besUrunFiyatiniAl() {
         double besUrunToplam = ilkurunfiyatinial()+ikinciurunfiyatinial()+ucuncuurunfiyatinial()+dorduncuurunfiyatinial()+besinciurunfiyatinial();
         System.out.println("bes urun toplami: "+besUrunToplam);
+        return besUrunToplam;
+    }
+    @Given("dort urun fiyatini al")
+    public double dortUrunFiyatiniAl() {
+        double dortUrunToplam = ilkurunfiyatinial()+ikinciurunfiyatinial()+ucuncuurunfiyatinial()+dorduncuurunfiyatinial();
+        System.out.println("dort urun toplami: "+dortUrunToplam);
+        return dortUrunToplam;
+    }
+
+    @When("saucedemoTotal")
+    public double saucedemototal() {
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[6]"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println(priceTotal.getText().substring(13));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(13));
+        System.out.println("bu niye boyle: "+saucedemotoplam);
+        return saucedemotoplam;
+    }
+    @When("saucedemoTotalDortUrun")
+    public double saucedemototaldorturun() {
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[5]"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println(priceTotal.getText().substring(13));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(13));
+        double yuvarlanan_sayi = (double) Math.round(saucedemotoplam * 100) / 100;
+        System.out.println("bu niye boyle: "+yuvarlanan_sayi);
+        return saucedemotoplam;
+    }
+
+    @Then("bes urun fiyatlari toplami kontrol")
+    public void besUrunFiyatlariToplamiKontrol() {
+        Assert.assertEquals(besUrunFiyatiniAl(),saucedemototal());
+    }
+
+    @Then("dort urun fiyatlari toplami kontrol")
+    public void dortUrunFiyatlariToplamiKontrol() {
+        Assert.assertEquals(dortUrunFiyatiniAl(),saucedemototaldorturun());
     }
 }
