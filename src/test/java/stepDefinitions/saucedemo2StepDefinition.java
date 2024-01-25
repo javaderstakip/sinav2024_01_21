@@ -112,6 +112,18 @@ public class saucedemo2StepDefinition extends BaseTest {
         System.out.println("dort urun toplami: "+dortUrunToplam);
         return dortUrunToplam;
     }
+    @Given("uc urun fiyatini al")
+    public double ucUrunFiyatiniAl() {
+        double ucUrunToplam = ilkurunfiyatinial()+ikinciurunfiyatinial()+ucuncuurunfiyatinial();
+        System.out.println("uc urun toplami: "+ucUrunToplam);
+        return ucUrunToplam;
+    }
+    @Given("iki urun fiyatini al")
+    public double ikiUrunFiyatiniAl() {
+        double ikiUrunToplam = ilkurunfiyatinial()+ikinciurunfiyatinial();
+        System.out.println("iki urun toplami: "+ikiUrunToplam);
+        return ikiUrunToplam;
+    }
 
     @When("saucedemoTotal")
     public double saucedemototal() {
@@ -132,14 +144,87 @@ public class saucedemo2StepDefinition extends BaseTest {
         System.out.println("bu niye boyle: "+yuvarlanan_sayi);
         return saucedemotoplam;
     }
+    @When("saucedemoTotalUcUrun")
+    public double saucedemototalucurun() {
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[4]"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println("önündeki yazılar gidince, sadece sayi: "+priceTotal.getText().substring(13));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(13));
+        double yuvarlanan_sayi = (double) Math.round(saucedemotoplam * 100) / 100;
+        System.out.println("yuvarlaninca: "+yuvarlanan_sayi);
+        return yuvarlanan_sayi;
+    }
+    @When("saucedemoTotalikiUrun")
+    public double saucedemototalikiurun() {
+        WebElement priceTotal = driver.findElement(By.xpath("(//div[contains(text(),'$')])[3]"));
+        System.out.println("ne yaziyor acaba: "+priceTotal.getText());
+        System.out.println("önündeki yazılar gidince, sadece sayi: "+priceTotal.getText().substring(13));
+        double saucedemotoplam = Double.parseDouble(priceTotal.getText().substring(13));
+        double yuvarlanan_sayi = (double) Math.round(saucedemotoplam * 100) / 100;
+        System.out.println("yuvarlaninca: "+yuvarlanan_sayi);
+        return yuvarlanan_sayi;
+    }
 
     @Then("bes urun fiyatlari toplami kontrol")
     public void besUrunFiyatlariToplamiKontrol() {
+
         Assert.assertEquals(besUrunFiyatiniAl(),saucedemototal());
+        System.out.println("bes urunlu eşitlik sağlandı");
     }
 
     @Then("dort urun fiyatlari toplami kontrol")
     public void dortUrunFiyatlariToplamiKontrol() {
         Assert.assertEquals(dortUrunFiyatiniAl(),saucedemototaldorturun());
+        System.out.println("dort urunlu eşitlik sağlandı");
+    }
+    @Then("uc urun fiyatlari toplami kontrol")
+    public void ucUrunFiyatlariToplamiKontrol() {
+        Assert.assertEquals(ucUrunFiyatiniAl(), saucedemototalucurun());
+        System.out.println("uc urunlu eşitlik sağlandı");
+    }
+    @Then("iki urun fiyatlari toplami kontrol")
+    public void ikiUrunFiyatlariToplamiKontrol() {
+        Assert.assertEquals(ikiUrunFiyatiniAl(),saucedemototalikiurun());
+        System.out.println("iki urunlu eşitlik sağlandı");
+    }
+
+    @Then("dort urun secili mi kontrol et")
+    public void dortUrunSeciliMiKontrolEt() {
+        WebElement backPackUrunEkli = driver.findElement(By.xpath("//*[@id='item_4_title_link']/div"));
+        backPackUrunEkli.isDisplayed();
+        WebElement bikeLightUrunEkli = driver.findElement(By.xpath("//*[@id='item_0_title_link']/div"));
+        bikeLightUrunEkli.isDisplayed();
+        WebElement boltTShirtUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_1_title_link\"]/div"));
+        boltTShirtUrunEkli.isDisplayed();
+        WebElement fleeceJacketUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_5_title_link\"]/div"));
+        fleeceJacketUrunEkli.isDisplayed();
+        System.out.println("dort urun de secili");
+//        WebElement onesieUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_2_title_link\"]/div"));
+//        onesieUrunEkli.isDisplayed();
+//        WebElement tShirtRedUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_3_title_link\"]/div"));
+//        tShirtRedUrunEkli.isDisplayed();
+//        System.out.println("nasil oluyor : "+tShirtRedUrunEkli.isDisplayed());
+//        System.out.println("hi");
+    }
+
+    @Then("uc urun secili mi kontrol et")
+    public void ucUrunSeciliMiKontrolEt() {
+        WebElement backPackUrunEkli = driver.findElement(By.xpath("//*[@id='item_4_title_link']/div"));
+        backPackUrunEkli.isDisplayed();
+        WebElement bikeLightUrunEkli = driver.findElement(By.xpath("//*[@id='item_0_title_link']/div"));
+        bikeLightUrunEkli.isDisplayed();
+        WebElement boltTShirtUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_1_title_link\"]/div"));
+        boltTShirtUrunEkli.isDisplayed();
+//        WebElement fleeceJacketUrunEkli = driver.findElement(By.xpath("//*[@id=\"item_5_title_link\"]/div"));
+//        fleeceJacketUrunEkli.isDisplayed();
+        System.out.println("uc urun de secili");
+    }
+    @Then("iki urun secili mi kontrol et")
+    public void ikiUrunSeciliMiKontrolEt() {
+        WebElement backPackUrunEkli = driver.findElement(By.xpath("//*[@id='item_4_title_link']/div"));
+        backPackUrunEkli.isDisplayed();
+        WebElement bikeLightUrunEkli = driver.findElement(By.xpath("//*[@id='item_0_title_link']/div"));
+        bikeLightUrunEkli.isDisplayed();
+        System.out.println("iki urun de secili");
     }
 }

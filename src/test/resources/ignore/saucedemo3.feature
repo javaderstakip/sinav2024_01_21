@@ -1,5 +1,6 @@
 @milestone_3
-Feature: saucedemo 5 urun sec
+Feature: saucedemo dort urun sec
+
   @milestone_3_1
   Scenario: giris ekranina git siteye gir
     Given site giris sayfasina git
@@ -14,7 +15,7 @@ Feature: saucedemo 5 urun sec
     And ucuncuUrunFiyatiniSec
     And dorduncuUrunFiyatiniSec
     When sepete git
-    Then bes urun secili mi kontrol et
+    Then dort urun secili mi kontrol et
 
   @milestone_2_3
   Scenario: checkout yap
