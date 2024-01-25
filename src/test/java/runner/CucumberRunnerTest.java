@@ -3,7 +3,7 @@ package runner;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = {"src/test/resources/features"},
+@CucumberOptions(features = {"src/test/resources/features/saucedemo5.feature"},
     glue = {"stepDefinitions"},
     tags = "")
 public class CucumberRunnerTest extends AbstractTestNGCucumberTests {
