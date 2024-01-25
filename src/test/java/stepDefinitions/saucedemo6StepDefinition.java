@@ -43,6 +43,7 @@ public class saucedemo6StepDefinition extends BaseTest {
     public void ilkUrunFiyatlariToplamiKontrol() {
         Assert.assertEquals(ilkurunfiyatitoplam(), saucedemototalılkurun());
         System.out.println("tek urunlu esitlik sağlandi");
+        System.out.println("ilkurunfiyatitoplam: "+ilkurunfiyatitoplam()+" = "+"saucedemototalılkurun: "+saucedemototalılkurun());
     }
 
 
